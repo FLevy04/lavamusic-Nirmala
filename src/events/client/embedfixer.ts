@@ -1,9 +1,9 @@
 import { Message } from "discord.js";
 import Event from "../../structures/Event";
-import { LavaClient } from "../../structures/LavaClient";
+import { Lavamusic } from "../../structures/index";
 
 export default class EmbedFixer extends Event {
-    constructor(client: LavaClient, file: string) {
+    constructor(client: Lavamusic, file: string) {
         super(client, file, {
             name: "messageCreate"
         });
@@ -108,7 +108,7 @@ export default class EmbedFixer extends Event {
                 // Kirim pesan baru
                 await message.channel.send({
                     content: `Pesan dari ${message.author}:\n\n> ${newContent}`,
-                    allowedMentions: { repliedUser: false, users: [], roles: [], everyone: false }
+                    allowedMentions: { repliedUser: false, parse: [] }
                 });
 
                 // Hapus pesan asli jika bot punya izin
